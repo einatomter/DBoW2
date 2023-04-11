@@ -4,6 +4,7 @@ include(ExternalProject)
 
 option(BUILD_DBoW2   "Build DBoW2"            ON)
 option(BUILD_Demo    "Build demo application" ON)
+option(BUILD_Vocab   "Build vocabulary"       ON)
 
 if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
@@ -58,6 +59,13 @@ if(BUILD_Demo)
   target_link_libraries(demo2 ${PROJECT_NAME} ${OpenCV_LIBRARIES})
   set_target_properties(demo2 PROPERTIES CXX_STANDARD 11)
   file(COPY demo/custom_images DESTINATION ${CMAKE_BINARY_DIR}/)
+endif(BUILD_Demo)
+
+# custom
+if(BUILD_Vocab)
+  add_executable(convertToBinary vocab/convertToBinary.cpp)
+  target_link_libraries(convertToBinary ${PROJECT_NAME} ${OpenCV_LIBRARIES})
+  set_target_properties(convertToBinary PROPERTIES CXX_STANDARD 11)
 endif(BUILD_Demo)
 
 configure_file(src/DBoW2.cmake.in

@@ -32,7 +32,7 @@ void testDatabase(const vector<vector<cv::Mat > > &features);
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 // number of training images
-const int NIMAGES = 196;
+const int NIMAGES = 392;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -46,12 +46,14 @@ void wait()
 
 int main()
 {
+  std::cout << "expected number of images: " << NIMAGES << std::endl;
+
   vector<vector<cv::Mat > > features;
   loadFeatures(features);
 
   testVocCreation(features);
 
-  wait();
+  // wait();
 
   testDatabase(features);
 
@@ -133,7 +135,7 @@ void testVocCreation(const vector<vector<cv::Mat > > &features)
 
   // save the vocabulary to disk
   cout << endl << "Saving vocabulary..." << endl;
-  voc.save("custom_castle_ruins.yml.gz");
+  voc.save("aqualoc.yml.gz");
   cout << "Done" << endl;
 }
 
@@ -144,7 +146,7 @@ void testDatabase(const vector<vector<cv::Mat > > &features)
   cout << "Creating a small database..." << endl;
 
   // load the vocabulary from disk
-  OrbVocabulary voc("custom_castle_ruins.yml.gz");
+  OrbVocabulary voc("aqualoc.yml.gz");
   
   OrbDatabase db(voc, false, 0); // false = do not use direct index
   // (so ignore the last param)
