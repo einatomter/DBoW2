@@ -1,7 +1,7 @@
 <launch>
   <arg name="bag_directory" default="/home/einar/slam_ws/Datasets/aqualoc/"/>
   <arg name="sequence" value="harbor_sequence_2.bag"/>
-  <arg name="topic" value="/camera/image_raw"/>
+  <arg name="topic" value="/image_clahe"/>
   <arg name="output" value="/home/einar/test_ws/src/DBoW2/demo/custom_images/"/>
 
   <node pkg="rosbag" type="play" name="rosbag" args="-d 2 $(arg bag_directory)/$(arg sequence)"/>
