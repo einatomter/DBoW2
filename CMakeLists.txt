@@ -66,7 +66,7 @@ if(BUILD_Vocab)
   add_executable(convertToBinary vocab/convertToBinary.cpp)
   target_link_libraries(convertToBinary ${PROJECT_NAME} ${OpenCV_LIBRARIES})
   set_target_properties(convertToBinary PROPERTIES CXX_STANDARD 11)
-endif(BUILD_Demo)
+endif(BUILD_Vocab)
 
 configure_file(src/DBoW2.cmake.in
   "${PROJECT_BINARY_DIR}/DBoW2Config.cmake" @ONLY)
