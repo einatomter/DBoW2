@@ -32,7 +32,7 @@ void testDatabase(const vector<vector<cv::Mat > > &features);
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 // number of training images
-const int NIMAGES = 392;
+const int NIMAGES = 2629;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -135,7 +135,7 @@ void testVocCreation(const vector<vector<cv::Mat > > &features)
 
   // save the vocabulary to disk
   cout << endl << "Saving vocabulary..." << endl;
-  voc.save("aqualoc.yml.gz");
+  voc.save("underwater.yml.gz");
   cout << "Done" << endl;
 }
 
@@ -146,7 +146,7 @@ void testDatabase(const vector<vector<cv::Mat > > &features)
   cout << "Creating a small database..." << endl;
 
   // load the vocabulary from disk
-  OrbVocabulary voc("aqualoc.yml.gz");
+  OrbVocabulary voc("underwater.yml.gz");
   
   OrbDatabase db(voc, false, 0); // false = do not use direct index
   // (so ignore the last param)

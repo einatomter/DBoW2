@@ -1,13 +1,13 @@
 <launch>
-  <arg name="bag_directory" default="/home/einar/slam_ws/Datasets/aqualoc/"/>
-  <arg name="sequence" value="archaeo_sequence_7.bag"/>
+  <arg name="bag_directory" default="/home/einar/Datasets/bags/"/>
+  <arg name="sequence" value="harbor_sequence_1.bag"/>
   <arg name="topic" value="/image_clahe"/>
-  <arg name="output" value="/home/einar/test_ws/src/DBoW2/demo/underwater_images/aqualoc_a7c/"/>
+  <arg name="output" value="/home/einar/DBoW2/demo/underwater_images/aqualoc_h_c_raw/h1/"/>
 
   <node pkg="rosbag" type="play" name="rosbag" args="-d 2 $(arg bag_directory)/$(arg sequence)"/>
   <node name="extract" pkg="image_view" type="extract_images" respawn="false" cwd="node">
     <remap from="image" to="$(arg topic)"/>
     <param name="filename_format" value="$(arg output)image%i.png"/>
-    <param name="sec_per_frame" value="1.0"/>
+    <param name="sec_per_frame" value="0.2"/>
   </node>
 </launch>
