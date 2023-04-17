@@ -49,6 +49,7 @@ class ImageSubscriber:
         clahe_image = clahe.apply(cv_image)
 
         try:
+            # self.publisher.publish(self.bridge.cv2_to_imgmsg(cv_image, "mono8"))
             self.publisher.publish(self.bridge.cv2_to_imgmsg(clahe_image, "mono8"))
         except CvBridgeError as e:
             rospy.logerr(e)

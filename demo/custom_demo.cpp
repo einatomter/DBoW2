@@ -32,7 +32,7 @@ void testDatabase(const vector<vector<cv::Mat > > &features);
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 // number of training images
-const int NIMAGES = 2629;
+const int NIMAGES = 6712;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -73,7 +73,7 @@ void loadFeatures(vector<vector<cv::Mat > > &features)
   for(int i = 0; i < NIMAGES; ++i)
   {
     stringstream ss;
-    ss << "custom_images/image" << i << ".png";
+    ss << "collection/image" << i << ".png";
 
     cv::Mat image = cv::imread(ss.str(), 0);
     cv::Mat mask;
@@ -119,19 +119,19 @@ void testVocCreation(const vector<vector<cv::Mat > > &features)
   << voc << endl << endl;
 
   // lets do something with this vocabulary
-  cout << "Matching images against themselves (0 low, 1 high): " << endl;
-  BowVector v1, v2;
-  for(int i = 0; i < NIMAGES; i++)
-  {
-    voc.transform(features[i], v1);
-    for(int j = 0; j < NIMAGES; j++)
-    {
-      voc.transform(features[j], v2);
+  // cout << "Matching images against themselves (0 low, 1 high): " << endl;
+  // BowVector v1, v2;
+  // for(int i = 0; i < NIMAGES; i++)
+  // {
+  //   voc.transform(features[i], v1);
+  //   for(int j = 0; j < NIMAGES; j++)
+  //   {
+  //     voc.transform(features[j], v2);
       
-      double score = voc.score(v1, v2);
-      cout << "Image " << i << " vs Image " << j << ": " << score << endl;
-    }
-  }
+  //     double score = voc.score(v1, v2);
+  //     cout << "Image " << i << " vs Image " << j << ": " << score << endl;
+  //   }
+  // }
 
   // save the vocabulary to disk
   cout << endl << "Saving vocabulary..." << endl;
@@ -182,14 +182,14 @@ void testDatabase(const vector<vector<cv::Mat > > &features)
 
   // we can save the database. The created file includes the vocabulary
   // and the entries added
-  cout << "Saving database..." << endl;
-  db.save("small_db.yml.gz");
-  cout << "... done!" << endl;
+  // cout << "Saving database..." << endl;
+  // db.save("small_db.yml.gz");
+  // cout << "... done!" << endl;
   
-  // once saved, we can load it again  
-  cout << "Retrieving database once again..." << endl;
-  OrbDatabase db2("small_db.yml.gz");
-  cout << "... done! This is: " << endl << db2 << endl;
+  // // once saved, we can load it again  
+  // cout << "Retrieving database once again..." << endl;
+  // OrbDatabase db2("small_db.yml.gz");
+  // cout << "... done! This is: " << endl << db2 << endl;
 }
 
 // ----------------------------------------------------------------------------
