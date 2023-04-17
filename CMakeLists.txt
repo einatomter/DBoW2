@@ -58,7 +58,7 @@ if(BUILD_Demo)
   add_executable(demo2 demo/custom_demo.cpp)
   target_link_libraries(demo2 ${PROJECT_NAME} ${OpenCV_LIBRARIES})
   set_target_properties(demo2 PROPERTIES CXX_STANDARD 11)
-  file(COPY demo/custom_images DESTINATION ${CMAKE_BINARY_DIR}/)
+  file(COPY demo/collection DESTINATION ${CMAKE_BINARY_DIR}/)
 endif(BUILD_Demo)
 
 # custom

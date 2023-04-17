@@ -1,5 +1,4 @@
 .vscode/*
 build/*
-demo/custom_images/*
+demo/collection/*
 demo/underwater_images/*
-demo/ready_to_train/*
